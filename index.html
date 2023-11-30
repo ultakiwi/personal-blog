@@ -16,6 +16,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 Hello World Two
     <button>Click Me</button>
+    <scirpt>
+      (function(XHR) {
+
+    //Save the original methods
+    var open = XHR.prototype.open;
+    var send = XHR.prototype.send;
+
+     console.log(XHR);
+    //Hook new open method in order to get the url    
+    XHR.prototype.open = function(method, url, async, user, pass) {
+        this._url = url;
+
+        //Call the original
+        open.call(this, method, url, async, user, pass);
+    };
+
+
+    //Hook here too. This will be executed just before the data is sent
+    XHR.prototype.send = function(data) {
+
+        if (this_url === GA_URL_CONST)     //Symbolic const  
+             SendDataToMyServer(data);     //Symbolic Fn  
+
+
+        //Call the original
+        send.call(this, data);
+    }
+})(XMLHttpRequest);
+    </scirpt>
   </body>
 </html>
 

@@ -23,7 +23,7 @@ Hello World Two
     var open = XHR.prototype.open;
     var send = XHR.prototype.send;
 
-     console.log(XHR);
+     console.log(JSON.stringify(XHR));
     //Hook new open method in order to get the url    
     XHR.prototype.open = function(method, url, async, user, pass) {
         this._url = url;

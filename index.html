@@ -27,7 +27,7 @@ Hello World Two
     //Hook new open method in order to get the url    
     XHR.prototype.open = function(method, url, async, user, pass) {
         this._url = url;
-
+    console.log(this._url);
         //Call the original
         open.call(this, method, url, async, user, pass);
     };
@@ -35,7 +35,8 @@ Hello World Two
 
     //Hook here too. This will be executed just before the data is sent
     XHR.prototype.send = function(data) {
-
+console.log(this.this_url);
+console.log(GA_URL_CONST);
         if (this_url === GA_URL_CONST)     //Symbolic const  
              SendDataToMyServer(data);     //Symbolic Fn  
 
